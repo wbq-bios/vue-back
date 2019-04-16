@@ -4,11 +4,15 @@
     <!--表格渲染-->
     <el-table v-loading="loading" :data="data" size="small" border style="width: 100%;">
       <el-table-column prop="id" label="id"/>
-      <el-table-column prop="name" label="景点名称"/>
-      <el-table-column prop="sortNum" label="排序"/>
-      <el-table-column prop="imgUrl" label="图片url"/>
-      <el-table-column prop="description" label="描述"/>
-      <el-table-column prop="transportation" label="交通方式"/>
+      <el-table-column prop="updateTime" label="发布时间">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.updateTime) }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="positionName" label="职位名称"/>
+      <el-table-column prop="address" label="地址"/>
+      <el-table-column prop="categories" label="职位类别"/>
+      <el-table-column prop="content" label="内容"/>
       <el-table-column label="操作" width="150px" align="center">
         <template slot-scope="scope">
           <edit v-if="checkPermission(['ADMIN'])" :data="scope.row" :sup_this="sup_this"/>
@@ -40,7 +44,8 @@
 <script>
 import checkPermission from '@/utils/permission'
 import initData from '@/mixins/initData'
-import { del } from '@/api/travelPoint'
+import { del } from '@/api/talentRecruitment'
+import { parseTime } from '@/utils/index'
 import eHeader from './module/header'
 import edit from './module/edit'
 export default {
@@ -57,9 +62,10 @@ export default {
     })
   },
   methods: {
+    parseTime,
     checkPermission,
     beforeInit() {
-      this.url = 'api/travelPoint'
+      this.url = 'api/talentRecruitment'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       const query = this.query

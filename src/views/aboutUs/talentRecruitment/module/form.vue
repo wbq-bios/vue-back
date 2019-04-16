@@ -1,20 +1,20 @@
 <template>
   <el-dialog :append-to-body="true" :visible.sync="dialog" :title="isAdd ? '新增' : '编辑'" width="500px">
     <el-form ref="form" :model="form" :rules="rules" size="small" label-width="80px">
-      <el-form-item label="景点名称">
-        <el-input v-model="form.name" style="width: 370px;"/>
+      <el-form-item label="发布时间">
+        <el-input v-model="form.updateTime" style="width: 370px;"/>
       </el-form-item>
-      <el-form-item label="排序">
-        <el-input v-model="form.sortNum" style="width: 370px;"/>
+      <el-form-item label="职位名称">
+        <el-input v-model="form.positionName" style="width: 370px;"/>
       </el-form-item>
-      <el-form-item label="图片url">
-        <el-input v-model="form.imgUrl" style="width: 370px;"/>
+      <el-form-item label="地址">
+        <el-input v-model="form.address" style="width: 370px;"/>
       </el-form-item>
-      <el-form-item label="描述">
-        <el-input v-model="form.description" style="width: 370px;"/>
+      <el-form-item label="职位类别">
+        <el-input v-model="form.categories" style="width: 370px;"/>
       </el-form-item>
-      <el-form-item label="交通方式">
-        <el-input v-model="form.transportation" style="width: 370px;"/>
+      <el-form-item label="内容">
+        <el-input v-model="form.content" style="width: 370px;"/>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { add, edit } from '@/api/travelPoint'
+import { add, edit } from '@/api/talentRecruitment'
 export default {
   props: {
     isAdd: {
@@ -42,11 +42,11 @@ export default {
       loading: false, dialog: false,
       form: {
         id: '',
-        name: '',
-        sortNum: '',
-        imgUrl: '',
-        description: '',
-        transportation: ''
+        updateTime: '',
+        positionName: '',
+        address: '',
+        categories: '',
+        content: ''
       }
     }
   },
@@ -95,11 +95,11 @@ export default {
       this.$refs['form'].resetFields()
       this.form = {
         id: '',
-        name: '',
-        sortNum: '',
-        imgUrl: '',
-        description: '',
-        transportation: ''
+        updateTime: '',
+        positionName: '',
+        address: '',
+        categories: '',
+        content: ''
       }
     }
   }

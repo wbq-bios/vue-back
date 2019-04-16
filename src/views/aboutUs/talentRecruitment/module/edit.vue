@@ -23,11 +23,11 @@ export default {
       const _this = this.$refs.form
       _this.form = {
         id: this.data.id,
-        name: this.data.name,
-        sortNum: this.data.sortNum,
-        imgUrl: this.data.imgUrl,
-        description: this.data.description,
-        transportation: this.data.transportation
+        updateTime: this.data.updateTime,
+        positionName: this.data.positionName,
+        address: this.data.address,
+        categories: this.data.categories,
+        content: this.data.content
       }
       _this.dialog = true
     }
